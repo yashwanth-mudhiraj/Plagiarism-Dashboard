@@ -1,0 +1,24 @@
+{
+  "name": "nodej",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@dodona/dolos-lib": "^1.7.0",
+    "cors": "^2.8.5",
+    "d3": "^4.13.0",
+    "d3-dsv": "^3.0.1",
+    "express": "^4.17.3",
+    "node-fetch": "^2.6.1",
+    "nodemailer": "^6.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

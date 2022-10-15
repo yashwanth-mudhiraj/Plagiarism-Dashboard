@@ -1,0 +1,7 @@
+id,leftFileId,leftFilePath,rightFileId,rightFilePath,similarity,totalOverlap,longestFragment,leftCovered,rightCovered
+52,2,Files/sam2.c,3,Files/sam3.c,1,46,23,23,23
+53,2,Files/sam2.c,0,Files/sam4.c,1,46,23,23,23
+54,3,Files/sam3.c,0,Files/sam4.c,1,46,23,23,23
+49,1,Files/sam1.c,2,Files/sam2.c,0.32727272727272727,18,7,9,9
+50,1,Files/sam1.c,3,Files/sam3.c,0.32727272727272727,18,7,9,9
+51,1,Files/sam1.c,0,Files/sam4.c,0.32727272727272727,18,7,9,9
