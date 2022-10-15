@@ -1,0 +1,8 @@
+
+<div class="homestyle">
+<app-nav-bar></app-nav-bar>
+
+<app-landing *ngIf="(auth.isAuthenticated$ | async) === false"></app-landing>
+<app-userscreen *ngIf="(auth.isAuthenticated$ | async)"></app-userscreen>
+
+</div>

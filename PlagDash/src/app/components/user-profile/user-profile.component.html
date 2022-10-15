@@ -1,0 +1,162 @@
+<div class="row">
+  <div class="col-12">
+    <p class="title mt-3 ms-5">Profile</p>
+  </div>
+</div>
+
+<div class="carholder">
+  <div class="d-flex justify-content-start regpanel">
+    <div class="row rowdash">
+      <div class="col-9">
+        <div class="card text-center profStyle">
+          <div class="card-body">
+            <h5 class="card-title crdtitle">Details</h5>
+            <hr class="divider-horizontal-blurry" style="color: white;" />
+            <div class="row">
+              <div class="col-6">
+                <div class="card text-center">
+                  <div class="card-header">Professor Profile</div>
+                  <div class="card-body">
+                    <p>
+                      <mat-form-field appearance="outline" >
+                        <mat-label>Professor ID</mat-label>
+                        <input matInput placeholder="Professor ID" *ngIf="proFlag" [(ngModel)]="pID">
+                        <input matInput placeholder="Professor ID" *ngIf="!proFlag" [(ngModel)]="pID" disabled>
+                      </mat-form-field>
+                    </p>
+
+                    <p>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Professor First Name</mat-label>
+                        <input matInput placeholder="Professor Name" *ngIf="proFlag" [(ngModel)]="pFName">
+                        <input matInput placeholder="Professor Name" *ngIf="!proFlag" [(ngModel)]="pFName" disabled>
+                      </mat-form-field>
+                    </p>
+
+                    <p>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Professor Last Name</mat-label>
+                        <input matInput placeholder="Professor Name" *ngIf="proFlag" [(ngModel)]="pLName">
+                        <input matInput placeholder="Professor Name" *ngIf="!proFlag" [(ngModel)]="pLName" disabled>
+                      </mat-form-field>
+                    </p>
+
+                    <p>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Department</mat-label>
+                        <input matInput placeholder="Department" *ngIf="proFlag" [(ngModel)]="pDept">
+                        <input matInput placeholder="Department" *ngIf="!proFlag" [(ngModel)]="pDept" disabled>
+                      </mat-form-field>
+                    </p>
+
+                    <p>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Similarity threshold</mat-label>
+                        <input matInput type="number" min="0" max="1" step="0.1" placeholder="Similarity Threshold" *ngIf="proFlag" [(ngModel)]="simThreshold">
+                        <input matInput  type="number" min="0" max="1" step="0.1" placeholder="Similarity Threshold" *ngIf="!proFlag" [(ngModel)]="simThreshold" disabled>
+                      </mat-form-field>
+                    </p>
+
+                    <p>
+                      <mat-form-field class="example-full-width" appearance="outline" *ngIf="proFlag">
+                        <mat-label>Joined Date</mat-label>
+                        <input matInput [min]="minDate" [max]="maxDate"  [matDatepicker]="picker" [(ngModel)]="dateJoined">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+
+                      <mat-form-field class="example-full-width" appearance="outline"  *ngIf="!proFlag">
+                        <mat-label>Joined Date</mat-label>
+                        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" [(ngModel)]="dateJoined" disabled>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+
+                    </p>
+
+
+
+                    <button mat-raised-button class="me-5" *ngIf="!proFlag" (click)="editProf()">Edit</button>
+                    <button mat-raised-button class="me-5" *ngIf="proFlag" (click)="updateProf()">Update</button>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="card text-center">
+                  <div class="card-header">Student Search/Registration</div>
+                  <div class="card-body">
+
+                    <p>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Student ID</mat-label>
+                        <input type="text" matInput [formControl]="myControl" [(ngModel)]="stuId" [matAutocomplete]="auto">
+                      <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option.stuId"
+                          (onSelectionChange)="studentSelect(option,$event)">
+                          {{option.stuId}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                    </p>
+
+                    <p>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Student First Name</mat-label>
+                        <input matInput placeholder="Student First Name" [(ngModel)]="stuFName">
+                      </mat-form-field>
+                    </p>
+
+                    <p>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Student Last Name</mat-label>
+                        <input matInput placeholder="Student Last Name" [(ngModel)]="stuLName">
+                      </mat-form-field>
+                    </p>
+
+                    <p>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Course</mat-label>
+                        <mat-select [(ngModel)]="courseId">
+                          <mat-option *ngFor="let course of courseList" [value]="course.courseId">
+                            {{course.courseName}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </p>
+
+                    <p>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Email ID</mat-label>
+                        <input matInput placeholder="Student Email" [formControl]="email" required [(ngModel)]="stuEmail">
+                        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                      </mat-form-field>
+                    </p>
+
+                    <button mat-raised-button class="me-5" (click)="saveStud()">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="card text-center overviewStyle">
+          <div class="card-body">
+            <h5 class="card-title crdtitle">Overview</h5>
+            <hr class="divider-horizontal-blurry" style="color: white;" />
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

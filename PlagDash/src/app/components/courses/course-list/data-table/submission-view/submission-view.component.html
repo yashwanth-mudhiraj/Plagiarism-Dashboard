@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>{{data.selectedAssgn.assgnName}}</h2>
+<mat-divider style="width: 900px;"></mat-divider>
+<mat-dialog-content>
+  <h3 style="padding: 10px">Similarity check for all the submitted assignments</h3>
+
+  <mat-accordion *ngFor="let sub of submissions.scored">
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Similarity : {{sub.similarity | number : '1.0-2'}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <p><strong>{{sub.pair.leftFile.path+" "}}</strong>&nbsp;compared with &nbsp;<strong>{{sub.pair.rightFile.path}}</strong></p>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+
+      <div class="d-flex align-items-start bg-light mb-3">
+        <div class="col ">
+          <div class="codeStyle">
+            <p *ngFor="let line of sub.pair.leftFile.lines">{{line}}</p>
+          </div>
+        </div>
+        <div class="col ">
+          <div class="codeStyle">
+            <p *ngFor="let line of sub.pair.rightFile.lines">{{line}}</p>
+          </div>
+        </div>
+      </div>
+
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
+</mat-dialog-content>

@@ -1,0 +1,11 @@
+
+<div class="container-fluid" *ngIf="auth.isLoading$ | async; else loaded">
+  <app-loading></app-loading>
+</div>
+
+<ng-template #loaded>
+  <app-homepage></app-homepage>
+</ng-template>
+
+
+

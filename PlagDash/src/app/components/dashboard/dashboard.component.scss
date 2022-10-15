@@ -1,0 +1,74 @@
+
+@import '../../app.component.scss';
+
+
+.rowdash{
+  margin-top: -4rem;
+  height: 20rem;
+    margin-right: 2rem;
+}
+
+
+.crd {
+  background-color: #eefdff;
+  color :rgba(81, 91, 124, 0.932);
+  width: 18rem;
+}
+
+.advanced-pie-legend{
+  width: 510px;
+}
+
+.col-6 {
+  width: 44%;
+}
+
+.donut{
+ margin-left: 3rem;
+ margin-top: -4rem;
+}
+
+.gauge{
+  margin-top: 1rem;
+}
+
+.graphContainer{
+  margin-top: 3rem;
+  margin-right: 9rem;
+}
+
+.barSelect {
+  margin-left: 5rem;
+}
+
+.barChart{
+  margin-left: 2rem;
+}
+
+.lineChart{
+  margin-left: 3rem;
+  margin-top: 4rem;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis-title {
+  fill: none;
+  stroke: black;
+  stroke-width: 0.5px;
+}
+
+.rect-style{
+  fill: black;
+}
+
+

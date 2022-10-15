@@ -1,0 +1,37 @@
+<div class="container">
+
+  <div class="card text-center">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Course ID</mat-label>
+            <input type="text" matInput [formControl]="myControl" [(ngModel)]="cID" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option.courseId"
+                (onSelectionChange)="courseSelect(option, $event)">
+                {{option.courseId}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Course Name</mat-label>
+            <input matInput placeholder="Course Name" [(ngModel)]="cName">
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <br>
+      <button mat-raised-button class="me-5" (click)="clear()">Clear</button>
+      <button mat-raised-button *ngIf="!updateFlag" (click)="courseReg()">Register</button>
+      <button mat-raised-button *ngIf="updateFlag" (click)="courseUpdate()">Update</button>
+    </div>
+  </div>
+
+
+</div>
+

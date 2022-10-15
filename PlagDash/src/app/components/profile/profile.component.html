@@ -1,0 +1,13 @@
+<div *ngIf="auth.user$ | async as user">
+  <div class="container" >
+    <div class="row">
+      <div class="col-md">
+        <img [src]="user.picture" alt="User's profile picture" width="50" height="50" class="rounded-circle img-fluid profile-picture">
+      </div>
+      <div class="col-md">
+        <h5>{{ user.name }}</h5>
+        <p style="font-size: 15px;">{{ user.email }}</p>
+      </div>
+    </div>
+  </div>
+</div>

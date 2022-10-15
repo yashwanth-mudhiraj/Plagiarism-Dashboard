@@ -1,0 +1,77 @@
+.bgcol{
+  background: rgb(212, 213, 219);
+}
+
+.cardstyle {
+  height: 100vh-10vh;
+}
+.leftcard {
+  width: 75%;
+}
+
+.rightcard {
+  width: 22%;
+}
+
+.titleText {
+  font-size: 2.5rem;
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
+
+.features{
+  margin-top: 2rem;
+  margin-left: 1rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1.9rem;
+}
+
+.frontList{
+  margin-left: 1.4rem;
+  margin-top: 2rem;
+  font-weight: 400;
+  font-size: 1.3rem;
+  font-family: Optima;
+}
+
+.plag.animate__animated.animate__fadeInLeft{
+  --animate-duration: 2s;
+}
+
+.animate__animated.animate__fadeInDown{
+  --animate-duration: 2s;
+}
+
+.frontList.animate__animated.animate__lightSpeedInRight{
+  --animate-duration: 2s;
+}
+
+.dashimg {
+  margin-top: 2rem;
+  margin-left: -2rem;
+  height: 18rem;
+
+}
+
+.chartArea {
+}
+
+.example-list {
+  width: 100px;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  background: #fff;
+  text-align: center;
+  padding: 10px;
+  margin: 0;
+}
+
+.example-list > li {
+  list-style-type: none;
+  border-bottom: solid 1px #8b8b8b;
+  padding: 8px 0;
+}
+
+.example-list > li:last-child {
+  border-bottom: none;
+}

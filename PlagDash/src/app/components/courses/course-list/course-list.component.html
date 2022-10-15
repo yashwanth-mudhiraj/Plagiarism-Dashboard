@@ -1,0 +1,17 @@
+
+<div class="bgcol">
+  <div class="row">
+    <div class="col-4">
+      <button mat-raised-button class="me-5" (click)="openDialog()">New Assignment</button>
+    </div>
+    <div class="col-4"></div>
+    <div class="col-4"><p>{{selectedCourse.courseId}} |
+      {{selectedCourse.courseName}}
+    </p></div>
+  </div>
+</div>
+
+
+<div class="data-table" style="background-color: white;">
+  <app-data-table [selectedCourse]="selectedCourse"></app-data-table>
+</div>

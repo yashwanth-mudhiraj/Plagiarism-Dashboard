@@ -1,0 +1,45 @@
+{
+  "name": "Courses/Assignments",
+  "children": [
+   {
+    "name": "CSC 215",
+    "children": [
+     {
+      "name": "assgnA",
+      "children": [
+        {"name": "0.6", "size": 0.7}
+       ]
+     },
+     {
+      "name": "assgnB",
+      "children": [
+        {"name": "0.4", "size": 0.4}
+       ]
+     },
+     {
+      "name": "assgnC",
+      "children": [
+       {"name": "0.3", "size": 0.6}
+      ]
+     }
+    ]
+   },
+   {
+    "name": "CSC 205",
+    "children": [
+     {"name": "assgn1",
+     "children": [
+      {"name": "0.4", "size": 0.8}
+     ]},
+     {"name": "assgn2",
+     "children": [
+      {"name": "0.4", "size": 0.5}
+     ]},
+     {"name": "assgn3",
+     "children": [
+      {"name": "0.4", "size": 0.2}
+     ]}
+    ]
+   }
+  ]
+ }

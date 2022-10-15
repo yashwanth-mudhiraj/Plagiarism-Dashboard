@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-12">
+    <p class="title mt-3 ms-5">Dashboard</p>
+  </div>
+</div>
+
+<div class="carholder">
+
+  <div class="container graphContainer">
+    <div class="row">
+      <div class="col-6 donut">
+        <ngx-charts-advanced-pie-chart [view]="view" [scheme]="colorScheme" [results]="pieData" [label]="labelPie" >
+        </ngx-charts-advanced-pie-chart>
+      </div>
+
+      <div class="col-6 gauge">
+        <ngx-charts-gauge [view]="gview" [scheme]="colorScheme" [results]="gaugeData" [legend]="legend"
+        [legendPosition]="legendPosition" [min] = "0" [max] = "1" [legendTitle] = legendTitle [showText] = false>
+</ngx-charts-gauge>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-6 barChart">
+        <mat-form-field appearance="fill" class="barSelect">
+          <mat-label>Select Course</mat-label>
+          <mat-select>
+            <mat-option id="filter" *ngFor="let course of courseList" [value]="course.courseId" (onSelectionChange)="courseSelect(course, $event)">
+              {{course.courseId}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div id="my_dataviz"></div>
+      </div>
+
+      <div class="col-6 lineChart">
+        <div id="my_dataviz2"></div>
+      </div>
+    </div>
+
+    <br>
+
+    <!-- <div class="row">
+      <div class="col-6">
+        <div id="chart"></div>
+      </div>
+      <div class="col-6">
+        <div id="dendrogram"></div>
+
+      </div>
+    </div>
+  </div> -->
+
+
+</div>

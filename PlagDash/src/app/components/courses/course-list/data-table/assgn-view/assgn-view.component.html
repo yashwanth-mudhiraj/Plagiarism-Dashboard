@@ -1,0 +1,19 @@
+
+
+<mat-dialog-content class="mat-typography">
+  <div class="div">
+    <div class="row">
+      <div class="col-12">
+        <strong>{{data.selectedAssgn.assgnName}}</strong>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="row mt-4">
+        <div class="col-12">
+
+            <embed [src]="fileLink" frameborder="2" height="900px" width="900px" type="application/pdf">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>

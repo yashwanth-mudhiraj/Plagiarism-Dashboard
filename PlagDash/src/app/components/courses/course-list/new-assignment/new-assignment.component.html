@@ -1,0 +1,35 @@
+<!-- <h2 mat-dialog-title>Install Angular</h2> -->
+<mat-dialog-content class="mat-typography">
+<div class="div">
+  <div class="row">
+    <div class="col-12">
+      <strong>New Assignment</strong>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="row mt-4">
+<div class="col-12">
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Assignment Name</mat-label>
+      <input matInput placeholder="Assignment Name" [(ngModel)]="asName">
+    </mat-form-field>
+  </p>
+  <p><mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Deadline</mat-label>
+    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" [(ngModel)]="asDead">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field></p>
+  <p>
+    <input type="file" id="file" (change)="uploadFile($event)">
+  </p>
+</div>
+    </div>
+  </div>
+</div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button mat-dialog-close (click)="createAssignment()" cdkFocusInitial>Create</button>
+</mat-dialog-actions>
