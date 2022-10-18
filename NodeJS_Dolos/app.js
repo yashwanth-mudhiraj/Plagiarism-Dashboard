@@ -46,8 +46,8 @@ app.get("/sendEmail", (req, res) => {
     host: "smtp-relay.sendinblue.com",
     port: 587,
     auth: {
-      user: "yashwanthmudhiraj@gmail.com",
-      pass: "VAPKb0JOI9SECHTW"
+      user: "",
+      pass: ""
     }
   });
 
