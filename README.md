@@ -22,9 +22,9 @@ Django 4, Dolos v1.7, Tree-sitter v0.20
 # How to run this web application?
 After installing the above versions run these commands:
 
-In NodeJS_Dolos -> open cmd and input command ( node app.js )
-In PlagDash -> open cmd and input command ( ng serve -o )
-In backendDash -> open cmd and input command ( python manage.py runserver )
+-In NodeJS_Dolos -> open cmd and input command ( node app.js )
+-In PlagDash -> open cmd and input command ( ng serve -o )
+-In backendDash -> open cmd and input command ( python manage.py runserver )
 
 
 Note: In NodeJS_Dolo s-> app.js, you need to add your own email ID and pass in app.get("/sendEmail" ..   method to send email notifications.
