@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import {DataTablesModule} from 'angular-datatables';
-import { MatFileUploadModule } from '@martyganz/mat-file-upload'
 import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
@@ -16,7 +15,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment as env } from '../environments/environment'
 
-// ---------------------------MDB UI Modules ----------------------------------
+// ---------------------------MDB UI Modules -----------------------
 
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';

@@ -9,14 +9,17 @@
   <div class="container graphContainer">
     <div class="row">
       <div class="col-6 donut">
-        <ngx-charts-advanced-pie-chart [view]="view" [scheme]="colorScheme" [results]="pieData" [label]="labelPie" >
+        <ngx-charts-advanced-pie-chart [view]="view" [scheme]="colorScheme"
+        [results]="pieData" [label]="labelPie" >
         </ngx-charts-advanced-pie-chart>
       </div>
 
       <div class="col-6 gauge">
-        <ngx-charts-gauge [view]="gview" [scheme]="colorScheme" [results]="gaugeData" [legend]="legend"
-        [legendPosition]="legendPosition" [min] = "0" [max] = "1" [legendTitle] = legendTitle [showText] = false>
-</ngx-charts-gauge>
+        <ngx-charts-gauge [view]="gview" [scheme]="colorScheme"
+        [results]="gaugeData" [legend]="legend"
+        [legendPosition]="legendPosition" [min] = "0" [max] = "1"
+        [legendTitle] = legendTitle [showText] = false>
+        </ngx-charts-gauge>
       </div>
     </div>
 

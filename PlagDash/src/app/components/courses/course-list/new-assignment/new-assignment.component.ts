@@ -45,52 +45,57 @@ export class NewAssignmentComponent implements OnInit {
 
 
   createAssignment() {
-    var val = {
-      assgnName : this.asName,
-      assgnCreated : this.datepipe.transform(new Date(), 'yyyy-MM-dd'),
-      assgnDeadline : this.datepipe.transform(this.asDead, 'yyyy-MM-dd'),
-      proId : this.data.selectedCourse.professorId,
-      courseId : this.data.selectedCourse.courseId,
-      DocFileName : this.DocFileName,
-      avgSim: 0.0,
-      year: new Date().getFullYear()
+    if(this.stuList==0){
+      alert("Please register students in this course before uploading assignments")
     }
-    this.service.addAssgn(val).subscribe(res=>{
-      var updatedAssgn:any = res
+    else{
+      var val = {
+        assgnName : this.asName,
+        assgnCreated : this.datepipe.transform(new Date(), 'yyyy-MM-dd'),
+        assgnDeadline : this.datepipe.transform(this.asDead, 'yyyy-MM-dd'),
+        proId : this.data.selectedCourse.professorId,
+        courseId : this.data.selectedCourse.courseId,
+        DocFileName : this.DocFileName,
+        avgSim: 0.0,
+        year: new Date().getFullYear()
+      }
+      this.service.addAssgn(val).subscribe(res=>{
+        var updatedAssgn:any = res
 
-      this.service.UploadFile(this.formData).subscribe((data:any)=> {
+        this.service.UploadFile(this.formData).subscribe((data:any)=> {
 
-        var updateDocName = {
-          assgnId : updatedAssgn.assgnId,
-          assgnName : this.asName,
-          assgnCreated : this.datepipe.transform(new Date(), 'yyyy-MM-dd'),
-          assgnDeadline : this.datepipe.transform(this.asDead, 'yyyy-MM-dd'),
-          proId : this.data.selectedCourse.professorId,
-          courseId : this.data.selectedCourse.courseId,
-          DocFileName : data.toString(),
-          avgSim: 0.0,
-          year: new Date().getFullYear()
-        }
-
-        this.service.updateAssgn(updateDocName).subscribe(()=>{
-        this.service.sendClickEvent("True")
-
-          this.DocFileName = data.toString();
-          this.DocFilePath = this.service.FileUrl + "/" + this.DocFileName
-
-          var val = {
-            params : {
-              fileName : this.DocFileName,
-              emailList : this.emailList
-            }
+          var updateDocName = {
+            assgnId : updatedAssgn.assgnId,
+            assgnName : this.asName,
+            assgnCreated : this.datepipe.transform(new Date(), 'yyyy-MM-dd'),
+            assgnDeadline : this.datepipe.transform(this.asDead, 'yyyy-MM-dd'),
+            proId : this.data.selectedCourse.professorId,
+            courseId : this.data.selectedCourse.courseId,
+            DocFileName : data.toString(),
+            avgSim: 0.0,
+            year: new Date().getFullYear()
           }
-          this.service.sendEmail(val).subscribe(data=>{
-            console.log(data)
-          })
-        })
 
+          this.service.updateAssgn(updateDocName).subscribe(()=>{
+          this.service.sendClickEvent("True")
+
+            this.DocFileName = data.toString();
+            this.DocFilePath = this.service.FileUrl + "/" + this.DocFileName
+
+            var val = {
+              params : {
+                fileName : this.DocFileName,
+                emailList : this.emailList
+              }
+            }
+            this.service.sendEmail(val).subscribe(data=>{
+              console.log(data)
+            })
+          })
+
+        })
       })
-    })
+    }
   }
 
   uploadFile(event:any){

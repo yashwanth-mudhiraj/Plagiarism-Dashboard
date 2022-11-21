@@ -22,10 +22,10 @@ def courseRegApi(request,id=0):
         courseReg_data = JSONParser().parse(request)
         courseReg_serializer = CourseRegSerializer(data=courseReg_data)
         if courseReg_serializer.is_valid():
-            path = "C:\\YASH\\Masters Proj\\NodeJS_Dolos\\Files\\Submissions\\"
-            folderName = courseReg_data['courseId']
-            newPath = os.path.join(path, folderName)
-            os.mkdir(newPath)
+            path = "C:\\YASH\\Masters Proj\\Plagiarism-Dashboard\\NodeJS_Dolos\\Files\\Submissions\\"
+            path = os.path.join(path, str(courseReg_data['professorId']))
+            path = os.path.join(path, courseReg_data['courseId'])
+            os.makedirs(path, exist_ok=True)
             courseReg_serializer.save()
             return JsonResponse("Added Successfully !", safe=False)
         return JsonResponse("Failed to Add.", safe=False)
@@ -119,10 +119,11 @@ def assgnApi(request,id=0):
         assgn_data = JSONParser().parse(request)
         assgnDetails_serializer = assgnSerializer(data=assgn_data)
         if assgnDetails_serializer.is_valid():
-            path = "C:\\YASH\Masters Proj\\NodeJS_Dolos\\Files\\Submissions\\"
-            newPath = os.path.join(path, assgn_data['courseId'])
-            newPath = os.path.join(newPath, assgn_data['assgnName'] )
-            os.mkdir(newPath)
+            path = "C:\\YASH\Masters Proj\\Plagiarism-Dashboard\\NodeJS_Dolos\\Files\\Submissions\\"
+            path = os.path.join(path, str(assgn_data['proId']))
+            path = os.path.join(path, assgn_data['courseId'])
+            path = os.path.join(path, assgn_data['assgnName'] )
+            os.mkdir(path)
             assgnDetails_serializer.save()
             return JsonResponse(assgnDetails_serializer.data, safe=False)
         return JsonResponse("Failed to Add.", safe=False)

@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
   isDoughnut: boolean = false;
   labelPie: any = ""
 
-  // options for guage chart
+  // options for gauge chart
   single: any[] = [];
   legend: boolean = true;
   legendPosition: string = 'right';
@@ -46,7 +46,7 @@ export class DashboardComponent implements OnInit {
 
 
   proData: any = {}
-  courseList: any = {}
+  courseList: any = [{courseId: "All"}]
   allAssgnData: any = {}
   barGraphData: any = {}
   assnCount: any = []
@@ -89,8 +89,9 @@ export class DashboardComponent implements OnInit {
       (profile: any) => {
         this.service.getProfList().subscribe(data => {
           this.proData = data.filter(s => s.email == profile.email)[0]
-          // console.log(this.proData)
-          this.processAvgSimScores()
+          if(this.proData!=undefined){
+            this.processAvgSimScores()
+          }
         })
       })
 
@@ -99,21 +100,24 @@ export class DashboardComponent implements OnInit {
 
   processAvgSimScores(): void {
     this.service.getAssgnList().subscribe(assgnList => {
-      assgnList.forEach((assgn: any) => {
-        var val = {
-          params: {
-            fileNames: ["./Files/Submissions" + "/" + assgn.courseId + "/" + assgn.assgnName],
-            assgnName: assgn.assgnName
+      assgnList = assgnList.filter(x => x.proId == this.proData.proId)
+      if(assgnList.length>0){
+        assgnList.forEach((assgn: any) => {
+          var val = {
+            params: {
+              fileNames: ["./Files/Submissions" + "/" + assgn.proId+ "/" +assgn.courseId + "/" + assgn.assgnName],
+              assgnName: assgn.assgnName
+            }
           }
-        }
-        this.service.getData(val).subscribe((data: any) => {
-          assgn.avgSim = Number(data.avgSimScore).toFixed(2)
-          this.service.updateAssgn(assgn).subscribe(res => {
-            // console.log(res)
+          this.service.getData(val).subscribe((data: any) => {
+            assgn.avgSim = Number(data.avgSimScore).toFixed(2)
+            this.service.updateAssgn(assgn).subscribe(res => {
+              // console.log(res)
+            })
           })
         })
-      })
-      this.getAssnList()
+        this.getAssnList()
+      }
     })
   }
 
@@ -194,7 +198,7 @@ export class DashboardComponent implements OnInit {
 
 
 
-  /* --------------------------------------------------------   Bar Chart ------------------------------------------*/
+  /* ----------------------------------------------   Bar Chart ------------------------------------------*/
 
   barChart() {
     this.barGraphData = this.allAssgnData.filter((x:any)=> x.avgSim != 0)
@@ -238,8 +242,8 @@ export class DashboardComponent implements OnInit {
 
 
   private drawBars(data: any[]): void {
-    // Create the X-axis band scale
 
+    // Create the X-axis band scale
     this.x = d3.scaleBand()
       .range([0, this.WIDTH])
       .domain(data.map(d => d.assgnName))
@@ -258,8 +262,6 @@ export class DashboardComponent implements OnInit {
     // Draw the Y-axis on the DOM
     this.svg.append("g")
       .call(d3.axisLeft(this.y));
-
-
 
   }
 

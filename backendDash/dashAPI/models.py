@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 
 class courseRegistration(models.Model):
     courseId = models.CharField(primary_key=True,max_length=50)

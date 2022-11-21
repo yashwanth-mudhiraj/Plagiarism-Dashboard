@@ -21,7 +21,7 @@ export class SubmissionViewComponent implements OnInit {
   getSubmissionData(){
     var val = {
       params : {
-        fileNames : ["./Files/Submissions" + "/" +this.data.selectedAssgn.courseId + "/" + this.data.selectedAssgn.assgnName]
+        fileNames : ["./Files/Submissions" + "/" +this.data.selectedAssgn.proId+"/" +this.data.selectedAssgn.courseId + "/" + this.data.selectedAssgn.assgnName]
       }
     }
     this.service.getData(val).subscribe(data=>{
